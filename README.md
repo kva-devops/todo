@@ -2,13 +2,13 @@
 [![Build Status](https://app.travis-ci.com/kva-devops/todo.svg?branch=master)](https://app.travis-ci.com/kva-devops/todo)
 [![codecov](https://codecov.io/gh/kva-devops/todo/branch/master/graph/badge.svg?token=6JFJVOASHI)](https://codecov.io/gh/kva-devops/todo)
 
-##О проекте.
+## О проекте.
 Приложение для отслеживания задач. Составление списка дел. 
 Позволяет добавлять задачи в список дел и закрывать их по мере выполнения.
 ![main](images/1.png)
-##Сборка 
+## Сборка 
 JDK14, Maven, PostgreSQL, Tomcat
-##Как использовать
+## Как использовать
 В верхнее поле вводите текст задачи и нажимаете кнопку "Добавить задание". 
 Добавленная задача появится в нижней части приложения.
 ![addTask](images/2.png)
@@ -19,7 +19,7 @@ JDK14, Maven, PostgreSQL, Tomcat
 ![deleteTask](images/4.png)
 Чтобы увидеть список всех задач, в том числе выполненных нажмите на кнопку "Показать все задачи".
 ![closedTaskView](images/5.png)
-##Контакты
+## Контакты
 Кутявин Владимир
 
 skype: tribuna87
