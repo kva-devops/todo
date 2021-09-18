@@ -11,7 +11,7 @@ env:
 
   global:
 
-    - CODECOV_TOKEN=""
+    - CODECOV_TOKEN="ff4c3dd4-689a-473c-97e8-ffbcebde819d"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
