@@ -1,7 +1,6 @@
 package ru.job4j.controller;
 
 import com.google.gson.Gson;
-import org.apache.log4j.Logger;
 import ru.job4j.model.Item;
 import ru.job4j.store.HbnStore;
 
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CloseTaskServlet extends HttpServlet {
-
-    public final static Logger LOG = Logger.getLogger(TODOServlet.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

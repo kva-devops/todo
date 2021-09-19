@@ -1,8 +1,6 @@
 package ru.job4j.controller;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.apache.log4j.Logger;
 import ru.job4j.model.Item;
 import ru.job4j.store.HbnStore;
 
@@ -15,7 +13,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class TODOAllItemsServlet extends HttpServlet {
-    public final static Logger LOG = Logger.getLogger(TODOServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
