@@ -7,6 +7,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.job4j.model.Item;
+import ru.job4j.model.User;
+
 import java.util.List;
 import java.util.function.Function;
 
@@ -47,16 +49,20 @@ public class HbnStore implements Store, AutoCloseable {
     }
 
     @Override
-    public List<Item> findAllItemCheckOff() {
+    public List<Item> findAllItemCheckOff(int userId) {
         return this.tx(
-                session -> session.createQuery("from ru.job4j.model.Item where done=false order by id asc").list()
+                session -> session.createQuery("from ru.job4j.model.Item where done=false and user_id=:id order by id asc")
+                        .setParameter("id", userId)
+                        .list()
         );
     }
 
     @Override
-    public List<Item> findAllItemCheckOffAndCheckOn() {
+    public List<Item> findAllItemCheckOffAndCheckOn(int userId) {
         return this.tx(
-            session -> session.createQuery("from ru.job4j.model.Item order by id asc").list()
+            session -> session.createQuery("from ru.job4j.model.Item where user_id=:id order by id asc")
+                    .setParameter("id", userId)
+                    .list()
         );
     }
 
@@ -77,5 +83,24 @@ public class HbnStore implements Store, AutoCloseable {
     @Override
     public Item findById(int id) {
         return this.tx(session -> session.get(Item.class, id));
+    }
+
+    @Override
+    public User findUserByEmail(String emailInput) {
+        List<User> buff = this.tx(
+                session -> session.createQuery("from ru.job4j.model.User where email=:email")
+                        .setParameter("email", emailInput)
+                        .list()
+        );
+        if (buff.size() == 0) {
+            return null;
+        } else {
+            return buff.get(0);
+        }
+    }
+
+    @Override
+    public void saveUser(User user) {
+        this.tx(session -> session.save(user));
     }
 }

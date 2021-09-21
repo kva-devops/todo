@@ -4,31 +4,47 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  
-  <servlet>
-    <servlet-name>TODOServlet</servlet-name>
-    <servlet-class>ru.job4j.controller.TODOServlet</servlet-class>
-  </servlet>
+
   <servlet>
     <servlet-name>CloseTaskServlet</servlet-name>
     <servlet-class>ru.job4j.controller.CloseTaskServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>TODOAllItemsServlet</servlet-name>
-    <servlet-class>ru.job4j.controller.TODOAllItemsServlet</servlet-class>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>ru.job4j.controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegServlet</servlet-name>
+    <servlet-class>ru.job4j.controller.RegServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TaskServlet</servlet-name>
+    <servlet-class>ru.job4j.controller.TaskServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>ru.job4j.controller.LogoutServlet</servlet-class>
   </servlet>
 
-  <servlet-mapping>
-    <servlet-name>TODOServlet</servlet-name>
-    <url-pattern>/todo-it</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CloseTaskServlet</servlet-name>
     <url-pattern>/todo-close-task</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>TODOAllItemsServlet</servlet-name>
-    <url-pattern>/todo-all-items</url-pattern>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegServlet</servlet-name>
+    <url-pattern>/reg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TaskServlet</servlet-name>
+    <url-pattern>/task</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   
 </web-app>
