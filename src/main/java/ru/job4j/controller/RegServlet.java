@@ -1,6 +1,5 @@
 package ru.job4j.controller;
 
-import org.apache.log4j.Logger;
 import ru.job4j.model.User;
 import ru.job4j.store.HbnStore;
 
@@ -24,6 +23,12 @@ public class RegServlet extends HttpServlet {
             req.setAttribute("error", "This email address is already registered.");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
-        resp.sendRedirect(req.getContextPath() + "/login.jsp");
+        resp.sendRedirect(req.getContextPath() + "/login");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req,
+                         HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("reg.jsp").forward(req, resp);
     }
 }

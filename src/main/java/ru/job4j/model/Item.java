@@ -1,6 +1,7 @@
 package ru.job4j.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -10,17 +11,20 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
+    private Timestamp created = new Timestamp(System.currentTimeMillis());
     private boolean done;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public static Item of(String description, boolean done, User user) {
-        Item item = new Item();
-        item.description = description;
-        item.done = done;
-        item.user = user;
-        return item;
+    public Item() {
+
+    }
+
+    public Item(String description, boolean done, User user) {
+        this.description = description;
+        this.done = done;
+        this.user = user;
     }
 
     public int getId() {

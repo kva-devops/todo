@@ -11,23 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </head>
-    <script>
-        function validate() {
-            let elements = document.forms[0].elements;
-            for (let i = 0; i < elements.length - 1; i++) {
-                if ($(elements[i]).val() === '') {
-                    alert($(elements[i]).attr('title'));
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function showAllTask() {
-            return window.location.href = "/todo/task?show=yes";
-        }
-    </script>
 <body>
 <div class="container-fluid">
     <h1>Текущие задачи</h1>
@@ -38,7 +23,7 @@
         <ul class="nav">
             <c:if test="${user == null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp">Войти</a>
+                    <a class="nav-link" href="<%=request.getContextPath()%>/login">Войти</a>
                 </li>
             </c:if>
             <c:if test="${user != null}">
@@ -77,7 +62,9 @@
     </form>
 </div>
 <div class="container-fluid">
-    <button type="submit" class="btn btn-primary mt-3" onclick="return showAllTask()">Все задачи</button>
+    <button type="submit" class="btn btn-primary mt-3" id="showButton" onclick="return showAllTask()">
+
+    </button>
 </div>
 </body>
 </html>

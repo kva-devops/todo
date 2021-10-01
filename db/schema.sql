@@ -8,6 +8,7 @@ CREATE TABLE users (
 CREATE TABLE items (
     id SERIAL PRIMARY KEY,
     description TEXT,
+    created TIMESTAMP,
     done BOOLEAN,
     user_id INT REFERENCES users(id)
 );
