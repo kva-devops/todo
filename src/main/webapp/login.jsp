@@ -57,7 +57,7 @@
                     </div>
                     <c:if test="${not empty error}">
                         <div style="color:#ff0000; font-weight: bold; margin: 30px 0;">
-                                ${error}
+                            <p>Неверный логин или пароль. Попробуйте снова.</p>
                         </div>
                     </c:if>
                 </form>

@@ -87,16 +87,10 @@ public class HbnStore implements Store, AutoCloseable {
 
     @Override
     public User findUserByEmail(String emailInput) {
-        List<User> buff = this.tx(
+        return (User) this.tx(
                 session -> session.createQuery("from ru.job4j.model.User where email=:email")
-                        .setParameter("email", emailInput)
-                        .list()
+                        .setParameter("email", emailInput).uniqueResult()
         );
-        if (buff.size() == 0) {
-            return null;
-        } else {
-            return buff.get(0);
-        }
     }
 
     @Override
