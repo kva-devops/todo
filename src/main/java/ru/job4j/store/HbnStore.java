@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import ru.job4j.model.Category;
 import ru.job4j.model.Item;
 import ru.job4j.model.User;
 
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.function.Function;
 
 public class HbnStore implements Store, AutoCloseable {
-
     private final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
             .configure().build();
 
@@ -49,6 +49,14 @@ public class HbnStore implements Store, AutoCloseable {
     }
 
     @Override
+    public List<Category> findAllCategories() {
+        return this.tx(
+                session -> session.createQuery("from ru.job4j.model.Category")
+                .list()
+        );
+    }
+
+    @Override
     public List<Item> findAllItemCheckOff(int userId) {
         return this.tx(
                 session -> session.createQuery("from ru.job4j.model.Item where done=false and user_id=:id order by id asc")
@@ -67,8 +75,15 @@ public class HbnStore implements Store, AutoCloseable {
     }
 
     @Override
-    public void saveItem(Item item) {
-        this.tx(session -> session.save(item));
+    public void saveItem(Item item, String[] categoryListId) {
+        this.tx(session -> {
+            for (String id : categoryListId) {
+                Category category = session.find(Category.class, Integer.parseInt(id));
+                item.addCategory(category);
+            }
+            session.save(item);
+            return true;
+        });
     }
 
     @Override

@@ -43,6 +43,13 @@
         <div class="mb-3">
             <label for="addTask" class="form-label">Описание нового задания</label>
             <textarea class="form-control" name="descriptionOfTask" id="addTask" rows="3" placeholder="Введите новое задание..." title="Введите текст задания"></textarea>
+            <select class="form-control" name="cIds" id="cIds" multiple>
+                <c:forEach items="${allCategories}" var="categories">
+                    <option value='<c:out value="${categories.id}"/>'>
+                            <c:out value="${categories.name}" />
+                    </option>
+                </c:forEach>
+            </select>
             <button type="submit" class="btn btn-primary mt-3" onclick="return validate()">Добавить задание</button>
         </div>
     </form>
