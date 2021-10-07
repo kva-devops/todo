@@ -18,6 +18,11 @@ CREATE TABLE category (
     name TEXT
 );
 
+CREATE TABLE items_category (
+    item_id INT NOT NULL,
+    categories_id INT NOT NULL
+)
+
 INSERT INTO category (name) VALUES ('Работа');
 INSERT INTO category (name) VALUES ('Отдых');
 INSERT INTO category (name) VALUES ('Семья');

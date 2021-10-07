@@ -58,10 +58,15 @@
     <h2>Список заданий</h2>
     <form action="<%=request.getContextPath()%>/todo-close-task" method="post">
     <ul class="list-group" id="itemsListUl">
+
         <c:forEach items="${tasks}" var="task">
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox"  name="check" value='<c:out value="${task.id}"/>' aria-label="..." <c:if test="${task.done == true}">checked</c:if> >
                 <i>Task: </i><c:out value="${task.description}"/> <i>Author: </i><c:out value="${user.name}"/>
+                <i>Categories: </i>
+                <c:forEach items="${task.categories}" var="category">
+                    <span><c:out value="${category.name}"/></span>,
+                </c:forEach>
             </li>
         </c:forEach>
     </ul>

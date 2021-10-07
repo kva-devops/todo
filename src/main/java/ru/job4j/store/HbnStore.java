@@ -59,7 +59,7 @@ public class HbnStore implements Store, AutoCloseable {
     @Override
     public List<Item> findAllItemCheckOff(int userId) {
         return this.tx(
-                session -> session.createQuery("from ru.job4j.model.Item where done=false and user_id=:id order by id asc")
+                session -> session.createQuery("select distinct it from ru.job4j.model.Item it join fetch it.categories where it.done=false and user_id=:id order by it.id asc")
                         .setParameter("id", userId)
                         .list()
         );
@@ -68,7 +68,7 @@ public class HbnStore implements Store, AutoCloseable {
     @Override
     public List<Item> findAllItemCheckOffAndCheckOn(int userId) {
         return this.tx(
-            session -> session.createQuery("from ru.job4j.model.Item where user_id=:id order by id asc")
+            session -> session.createQuery("select distinct it from ru.job4j.model.Item it join fetch it.categories where user_id=:id order by it.id asc")
                     .setParameter("id", userId)
                     .list()
         );
