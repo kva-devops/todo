@@ -1,7 +1,5 @@
 package ru.job4j.controller;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import ru.job4j.model.Category;
 import ru.job4j.model.Item;
 import ru.job4j.model.User;
@@ -13,25 +11,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TaskServlet extends HttpServlet {
-
-    private static final Logger LOG = LogManager.getLogger(TaskServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
         List<Category> categoryList = HbnStore.instOf().findAllCategories();
+        Map<Integer, List<Category>> categoryMap = new HashMap<>();
         int userId = user.getId();
         List<Item> itemList;
         if ("yes".equals(req.getParameter("show"))) {
             itemList = new ArrayList<>(HbnStore.instOf().findAllItemCheckOffAndCheckOn(userId));
-
         } else {
             itemList = new ArrayList<>(HbnStore.instOf().findAllItemCheckOff(userId));
         }
-        LOG.info(itemList.get(0).getCategoryList().get(0).getName());
+        for (Item elem : itemList) {
+            categoryMap.put(elem.getId(), elem.getCategoryList());
+        }
+        req.setAttribute("categoryItemMap", categoryMap);
         req.setAttribute("tasks", itemList);
         req.setAttribute("user", req.getSession().getAttribute("user"));
         req.setAttribute("allCategories", categoryList);

@@ -43,7 +43,7 @@
         <div class="mb-3">
             <label for="addTask" class="form-label">Описание нового задания</label>
             <textarea class="form-control" name="descriptionOfTask" id="addTask" rows="3" placeholder="Введите новое задание..." title="Введите текст задания"></textarea>
-            <select class="form-control" name="cIds" id="cIds" multiple>
+            <select class="form-select" name="cIds" id="cIds" multiple size="5">
                 <c:forEach items="${allCategories}" var="categories">
                     <option value='<c:out value="${categories.id}"/>'>
                             <c:out value="${categories.name}" />
@@ -64,8 +64,8 @@
                 <input class="form-check-input me-1" type="checkbox"  name="check" value='<c:out value="${task.id}"/>' aria-label="..." <c:if test="${task.done == true}">checked</c:if> >
                 <i>Task: </i><c:out value="${task.description}"/> <i>Author: </i><c:out value="${user.name}"/>
                 <i>Categories: </i>
-                <c:forEach items="${task.categories}" var="category">
-                    <span><c:out value="${category.name}"/></span>,
+                <c:forEach items="${categoryItemMap[task.id]}" var="category">
+                    <b><c:out value="${category.name}"/></b>
                 </c:forEach>
             </li>
         </c:forEach>
