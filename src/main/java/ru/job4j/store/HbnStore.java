@@ -112,4 +112,15 @@ public class HbnStore implements Store, AutoCloseable {
     public void saveUser(User user) {
         this.tx(session -> session.save(user));
     }
+
+    public static void main(String[] args) {
+        List<Item> buff = HbnStore.instOf().findAllItemCheckOff(1);
+        for (Item elem : buff) {
+            System.out.println("Item id: " + elem.getId());
+            for (Category category : elem.getCategoryList()) {
+                System.out.println("Category: " + category.getName());
+            }
+            System.out.println("_____");
+        }
+    }
 }
