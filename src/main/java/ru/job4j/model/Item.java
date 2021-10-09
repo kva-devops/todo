@@ -27,6 +27,10 @@ public class Item {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Category> categories = new ArrayList<>();
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     public Item() {
 
     }

@@ -63,11 +63,6 @@
             <li class="list-group-item">
                 <input class="form-check-input me-1" type="checkbox"  name="check" value='<c:out value="${task.id}"/>' aria-label="..." <c:if test="${task.done == true}">checked</c:if> >
                 <i>Task: </i><c:out value="${task.description}"/> <i>Author: </i><c:out value="${user.name}"/>
-<%--                <i>Categories: </i>--%>
-<%--                <c:forEach items="${categoryItemMap[task.id]}" var="category">--%>
-<%--                    <b><c:out value="${category.name}"/></b>--%>
-<%--                </c:forEach>--%>
-
                 <i>Category: </i>
                 <c:forEach items="${task.categories}" var="category">
                     <c:out value="${category.name}" />
