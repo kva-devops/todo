@@ -27,10 +27,6 @@ public class Item {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Category> categories = new ArrayList<>();
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-
     public Item() {
 
     }
@@ -77,12 +73,12 @@ public class Item {
         this.user = user;
     }
 
-    public List<Category> getCategoryList() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categories = categoryList;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     @Override

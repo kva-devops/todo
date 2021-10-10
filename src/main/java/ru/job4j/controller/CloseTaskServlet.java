@@ -14,8 +14,12 @@ import java.util.ArrayList;
 public class CloseTaskServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
+        if (req.getParameterValues("check") == null) {
+            resp.sendRedirect(req.getContextPath() + "/task");
+            return;
+        }
         String[] values = req.getParameterValues("check");
         for (String elem : values) {
             Item item = HbnStore.instOf().findById(Integer.parseInt(elem));

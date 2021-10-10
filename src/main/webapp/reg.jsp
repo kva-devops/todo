@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group col-3 p-1">
                         <label>Пароль</label>
-                        <input type="text" class="form-control" name="password" title="Введите пароль">
+                        <input type="password" class="form-control" name="password" title="Введите пароль">
                     </div>
                     <div class="form-group col-3 p-1 mt-2">
                         <button type="submit" class="btn btn-primary" onclick="return validate()">Зарегистрироваться</button>

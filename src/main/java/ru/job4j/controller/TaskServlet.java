@@ -30,7 +30,7 @@ public class TaskServlet extends HttpServlet {
             itemList = new ArrayList<>(HbnStore.instOf().findAllItemCheckOff(userId));
         }
         for (Item elem : itemList) {
-            categoryMap.put(elem.getId(), elem.getCategoryList());
+            categoryMap.put(elem.getId(), elem.getCategories());
         }
         req.setAttribute("categoryItemMap", categoryMap);
         req.setAttribute("tasks", itemList);
