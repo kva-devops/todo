@@ -1,6 +1,5 @@
 # Приложение ToDo 
 [![Build Status](https://app.travis-ci.com/kva-devops/todo.svg?branch=master)](https://app.travis-ci.com/kva-devops/todo)
-[![codecov](https://codecov.io/gh/kva-devops/todo/branch/master/graph/badge.svg?token=6JFJVOASHI)](https://codecov.io/gh/kva-devops/todo)
 
 ## О проекте.
 #### Описание
@@ -8,7 +7,7 @@ Web-приложения для постановки и отслеживания
 Позволяет составлять списки дел и закрывать их по мере выполнения.
  
 #### Технологии
-> JDK14, Maven, Java Servlet, HTML, JSP, JSTL, PostgreSQL, Hibernate, Junit
+> JDK14, Maven, Java Servlet, HTML, JSP, JSTL, PostgreSQL, Hibernate, HQL
 
 ## Сборка 
 0. Скачайте исходники 
